@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Reverse Number Digits</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 50px;
+ }
+ 
+ 
+ h2 {
+ color: light blue;
+ text-align: center;
+ margin-bottom: 20px;
+ }
+ input {
+ padding: 10px;
+ margin-top: 10px;
+ width: 100%;
+ font-size: 16px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ }
+ button {
+ padding: 10px;
+ width: 100%;
+ margin-top: 15px;
+ font-size: 16px;
+ background-color: #007bff;
+ color: white;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ }
+ button:hover {
+ background-color: #0056b3;
+ }
+ .result {
+ margin-top: 20px;
+ font-weight: bold;
+ background-color: #e9f7ef;
+ padding: 10px;
+ border-left: 5px solid #28a745;
+ border-radius: 5px;
+ color: #155724;
+ }
+ </style>
+</head>
+<body>
+ <h2>Reverse Number Digits</h2>
+ <input type="number" id="numberInput" placeholder="Enter a number">
+ <button onclick="reverseDigits()">Reverse Digits</button>
+ <div class="result" id="reversedNumberResult"></div>
+ <script>
+ function reverseDigits() {
+ const num = document.getElementById('numberInput').value;
+ if (num === '') {
+ document.getElementById('reversedNumberResult').innerText = "Please enter a number.";
+ return;
+ }
+ const reversed = num.toString().split('').reverse().join('');
+ document.getElementById('reversedNumberResult').innerText = "Reversed: " + reversed;
+ }
+ </script>
+</body>
+</html>

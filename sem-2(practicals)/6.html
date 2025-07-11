@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prime Numbers in Range</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f2f2f2; /* Light gray background */
+        }
+        .container {
+            background: orange;
+            padding: 20px 30px;
+            max-width: 400px;
+            margin: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border: 1px solid #ddd; /* Light gray border */
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #007bff; /* Professional blue button */
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+        .result {
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333; /* Dark gray result text */
+        }
+        h2 {
+            color: #444; /* Dark gray header */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Find Prime Numbers in a Range</h2>
+        <input type="number" id="start" placeholder="Enter starting number">
+        <input type="number" id="end" placeholder="Enter ending number">
+        <button onclick="findPrimes()">Show Prime Numbers</button>
+        <div class="result" id="primeResult"></div>
+    </div>
+    <script>
+        function isPrime(num) {
+            if (num < 2) return false;
+            for (let i = 2; i <= Math.sqrt(num); i++) {
+                if (num % i === 0) return false;
+            }
+            return true;
+        }
+        function findPrimes() {
+            const start = parseInt(document.getElementById('start').value);
+            const end = parseInt(document.getElementById('end').value);
+            let primes = [];
+            if (isNaN(start) || isNaN(end) || start > end) {
+                document.getElementById('primeResult').innerText = "Please enter a valid range.";
+                return;
+            }
+            for (let i = start; i <= end; i++) {
+                if (isPrime(i)) {
+                    primes.push(i);
+                }
+            }
+            document.getElementById('primeResult').innerText = primes.length ? "Prime Numbers: " + primes.join(", ") : "No prime numbers found in this range.";
+        }
+    </script>
+</body>
+</html>
+ 

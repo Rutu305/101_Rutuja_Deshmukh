@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>Form Validation</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ background-color: #f2f2f2;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh;
+ }
+ .container {
+ background-color: #fff;
+ padding: 30px 40px;
+ border-radius: 10px;
+ box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+ width: 400px;
+ }
+ h2 {
+ text-align: center;
+ margin-bottom: 20px;
+ }
+ label {
+ font-weight: bold;
+ }
+ input[type="text"],
+ input[type="password"],
+ textarea {
+ width: 100%;
+ padding: 10px;
+ margin: 8px 0 15px 0;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ box-sizing: border-box;
+ resize: vertical;
+ }
+ input[type="submit"] {
+ width: 100%;
+ background-color: #4CAF50;
+ color: white;
+ padding: 12px;
+ border: none;
+ border-radius: 5px;
+ font-size: 16px;
+ cursor: pointer;
+ }
+ input[type="submit"]:hover {
+ background-color: #45a049;
+ }
+ .error {
+ color: red;
+ font-size: 14px;
+ margin-top: -10px;
+ margin-bottom: 10px;
+ }
+ .success {
+ color: green;
+ text-align: center;
+ font-weight: bold;
+ margin-top: 10px;
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h2>validation Form</h2>
+ <form id="myForm" onsubmit="return validateForm()">
+ <label for="name">Name:</label>
+ <input type="text" id="name">
+ <label for="email">Email:</label>
+ <input type="text" id="email">
+ <label for="password">Password:</label>
+ <input type="password" id="password">
+ <label for="mobile">Mobile Number:</label>
+ <input type="text" id="mobile">
+ <label for="address">Address:</label>
+ <textarea id="address" rows="3"></textarea>
+ <label for="salary">Salary:</label>
+ <input type="text" id="salary">
+ <div id="error" class="error"></div>
+ <input type="submit" value="Submit">
+ <div id="success" class="success"></div>
+ </form>
+ </div>
+ <script>
+ function validateForm() {
+ let name = document.getElementById("name").value.trim();
+ let email = document.getElementById("email").value.trim();
+ let password = document.getElementById("password").value.trim();
+ let mobile = document.getElementById("mobile").value.trim();
+ let address = document.getElementById("address").value.trim();
+ let salary = document.getElementById("salary").value.trim();
+ let error = document.getElementById("error");
+ let success = document.getElementById("success");
+ error.innerHTML = "";
+ success.innerHTML = "";
+ const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+ const mobilePattern = /^[6-9]\d{9}$/; // Indian 10-digit numbers starting with 6-9
+ const salaryPattern = /^\d+(\.\d{1,2})?$/; // Valid number with optional decimals
+ if (name === "") {
+ error.innerHTML = "Please enter your name.";
+ return false;
+ }
+ if (!emailPattern.test(email)) {
+ error.innerHTML = "Please enter a valid email address.";
+ return false;
+ }
+ if (password.length < 6) {
+ error.innerHTML = "Password must be at least 6 characters.";
+ return false;
+ }
+ if (!mobilePattern.test(mobile)) {
+ error.innerHTML = "Enter a valid 10-digit mobile number starting with 6-9.";
+ return false;
+ }
+ if (address === "") {
+ error.innerHTML = "Please enter your address.";
+ return false;
+ }
+ if (!salaryPattern.test(salary) || parseFloat(salary) <= 0) {
+ error.innerHTML = "Enter a valid salary (positive number).";
+ return false;
+ }
+ success.innerHTML = "Form submitted successfully!";
+ return false; // Change to true when connecting with backend
+ }
+ </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>String Length Calculator</title>
+ <style>
+ body {
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ background-color: #f0f8ff;
+ margin: 50px;
+ color: #333;
+ }
+ .container {
+ background-color: pink;
+ max-width: 400px;
+ margin: auto;
+ padding: 25px 30px;
+ border-radius: 10px;
+ box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+ }
+ h2 {
+ color: light blue;
+ text-align: center;
+ margin-bottom: 20px;
+ }
+ input {
+ padding: 10px;
+ margin-top: 10px;
+ width: 100%;
+ font-size: 16px;
+ border: 1px solid #ccc;
+ border-radius: 5px;
+ }
+ button {
+ padding: 10px;
+ width: 100%;
+ margin-top: 15px;
+ font-size: 16px;
+ background-color: #007bff;
+ color: white;
+ border: none;
+ border-radius: 5px;
+ cursor: pointer;
+ }
+ button:hover {
+ background-color: #0056b3;
+ }
+ .result {
+ margin-top: 20px;
+ font-weight: bold;
+ background-color: #e9f7ef;
+ padding: 10px;
+ border-left: 5px solid #28a745;
+ border-radius: 5px;
+ color: #155724;
+ }
+ </style>
+</head>
+<body>
+ <div class="container">
+ <h2>String Length Calculator</h2>
+ <input type="text" id="stringInput" placeholder="Enter a string here...">
+ <button onclick="calculateLength()">Calculate Length</button>
+ <div class="result" id="stringLengthResult"></div>
+ </div>
+ <script>
+ function calculateLength() {
+ const input = document.getElementById('stringInput').value;
+ const length = input.length;
+ document.getElementById('stringLengthResult').innerText = "Length: " + length;
+ }
+ </script>
+</body>
+</html>
